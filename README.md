@@ -64,7 +64,11 @@ Result:
 #### Translate: Achievement category
 
 ```bash
-curl -s -H "Authorization: Bearer ${accessToken}" \
-  "https://${realm}.api.blizzard.com/data/wow/achievement-category/156?namespace=${namespace}" \
-  | jq --raw-output '"L[\"\(.name.en_GB)\"] = true\nL[\"\(.name.en_GB)\"] = \"\(.name.de_DE)\"\nL[\"\(.name.en_GB)\"] = \"\(.name.en_US)\"\nL[\"\(.name.en_GB)\"] = \"\(.name.es_ES)\"\nL[\"\(.name.en_GB)\"] = \"\(.name.es_MX)\"\nL[\"\(.name.en_GB)\"] = \"\(.name.fr_FR)\"\nL[\"\(.name.en_GB)\"] = \"\(.name.it_IT)\"\nL[\"\(.name.en_GB)\"] = \"\(.name.ko_KR)\"\nL[\"\(.name.en_GB)\"] = \"\(.name.pt_BR)\"\nL[\"\(.name.en_GB)\"] = \"\(.name.ru_RU)\"\nL[\"\(.name.en_GB)\"] = \"\(.name.zh_CN)\"\nL[\"\(.name.en_GB)\"] = \"\(.name.zh_TW)\""'
+achievementCategory() { \
+  curl -s -H "Authorization: Bearer ${accessToken}" \
+    "https://${realm}.api.blizzard.com/data/wow/achievement-category/${1}?namespace=${namespace}" \
+    | jq --raw-output '"L[\"\(.name.en_GB)\"] = true\nL[\"\(.name.en_GB)\"] = \"\(.name.de_DE)\"\nL[\"\(.name.en_GB)\"] = \"\(.name.en_US)\"\nL[\"\(.name.en_GB)\"] = \"\(.name.es_ES)\"\nL[\"\(.name.en_GB)\"] = \"\(.name.es_MX)\"\nL[\"\(.name.en_GB)\"] = \"\(.name.fr_FR)\"\nL[\"\(.name.en_GB)\"] = \"\(.name.it_IT)\"\nL[\"\(.name.en_GB)\"] = \"\(.name.ko_KR)\"\nL[\"\(.name.en_GB)\"] = \"\(.name.pt_BR)\"\nL[\"\(.name.en_GB)\"] = \"\(.name.ru_RU)\"\nL[\"\(.name.en_GB)\"] = \"\(.name.zh_CN)\"\nL[\"\(.name.en_GB)\"] = \"\(.name.zh_TW)\""'
+}
+
+achievementCategory 156
 ```
