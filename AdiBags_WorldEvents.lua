@@ -16,6 +16,7 @@ local filterDatabase = {
 			34085, -- Red Winter Clothes
 			34087, -- Green Winter Clothes
 			70923, -- Gaudy Winter Veil Sweater
+			128768, -- Candy Cane
 			139299, -- Finely-Tailored Red Holiday Hat
 			174865, -- A Tiny Winter Hat
 		},
@@ -77,6 +78,7 @@ local filterDatabase = {
 	},
 	worldEventDarkmoonFaire = {
 		items = {
+			71083, -- Darkmoon Game Token
 			92959, -- Darkmoon "Cougar"
 			92969, -- Darkmoon "Rocket"
 			151256, -- Purple Dance Stick
@@ -201,7 +203,7 @@ local function Tooltip_Init()
 	return tip
 end
 
-local AdiBagsFilter = AdiBags:RegisterFilter("World Events", 98, "ABEvent-1.0")
+local AdiBagsFilter = AdiBags:RegisterFilter("WorldEvents", 98, "ABEvent-1.0")
 AdiBagsFilter.uiName = L["World Events"]
 AdiBagsFilter.uiDesc = L["World Events"] .. " " .. L["Filter"]
 
@@ -215,7 +217,7 @@ function AdiBagsFilter:OnInitialize()
 		end
 	end)
 
-	self.db = AdiBags.db:RegisterNamespace("World Events", {
+	self.db = AdiBags.db:RegisterNamespace("WorldEvents", {
 		profile = profileEnabled,
 	})
 end
