@@ -9,7 +9,7 @@ Items are filtered into categories by id, class, subclass or tooltips.
 
 ## 📦 Category
 
-✍️ Put an "x" in a category:
+✍️ Replace space "[ ]" with an "[x]" in a category:
 
 * [ ] Brawler's Guild
 * [ ] Brewfest
