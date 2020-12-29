@@ -9,14 +9,20 @@ Filters "World Events" using AdiBags.
 * [API Clients](https://develop.battle.net/access/clients)
 * [API Documentation](https://develop.battle.net/documentation/world-of-warcraft/game-data-apis)
 
+Software:
+
+```bash
+sudo apt install curl jq
+```
 
 API Authorization:
 
 ```bash
-realm="eu"
-namespace="static-eu"
 clientId="{Your client id}"
 clientSecret="{Your client secret}"
+
+realm="eu"
+namespace="static-eu"
 
 accessToken=$(curl -s -u ${clientId}:${clientSecret} -d grant_type=client_credentials "https://${realm}.battle.net/oauth/token" | jq -r '.access_token')
 ```
