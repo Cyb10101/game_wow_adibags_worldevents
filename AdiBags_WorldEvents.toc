@@ -1,0 +1,10 @@
+## Interface: 90002
+## Title: AdiBags - World events
+## Notes: Adds various items to AdiBags filter groups
+## Version: 1.0.0
+## Author: Cyb10101
+## X-Category: Bags & Inventory
+## Dependancies: AdiBags
+
+Localization.lua
+AdiBags_WorldEvents.lua
