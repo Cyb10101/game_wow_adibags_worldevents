@@ -2,7 +2,7 @@
 
 Filters "World Events" using AdiBags.
 
-* [Curse](https://www.curseforge.com/wow/addons/adibags-world-events)
+* [Curse: AdiBags_WorldEvents](https://www.curseforge.com/wow/addons/adibags-world-events)
 
 ## Development
 
