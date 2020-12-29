@@ -1,8 +1,10 @@
 # AdiBags - World Events
 
-Filters "World Events" using AdiBags.
+Addon for World of Warcraft to filter "World Events" using AdiBags.
 
 * [Curse: AdiBags_WorldEvents](https://www.curseforge.com/wow/addons/adibags-world-events)
+* [Curse: AdiBags](https://www.curseforge.com/wow/addons/adibags)
+* [Curse: idTip](https://www.curseforge.com/wow/addons/idTip)
 
 ## Development
 
