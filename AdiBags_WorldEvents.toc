@@ -1,5 +1,5 @@
 ## Interface: 90002
-## Title: AdiBags - World events
+## Title: AdiBags - World Events
 ## Notes: Adds various items to AdiBags filter groups
 ## Author: Cyb10101
 ## X-Category: Bags & Inventory
