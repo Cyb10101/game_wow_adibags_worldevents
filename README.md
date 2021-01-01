@@ -17,60 +17,30 @@ Software:
 sudo apt install curl jq
 ```
 
-API Authorization:
+Required API Authorization:
 
 ```bash
-clientId="{Your client id}"
-clientSecret="{Your client secret}"
-
-realm="eu"
-namespace="static-eu"
-
-accessToken=$(curl -s -u ${clientId}:${clientSecret} -d grant_type=client_credentials "https://${realm}.battle.net/oauth/token" | jq -r '.access_token')
+source functions.sh
+authentificate "{Your client id}" "{Your client secret}"
 ```
 
-### Get achievement categories
+### Translation
 
 ```bash
-curl -s -H "Authorization: Bearer ${accessToken}" \
-  "https://${realm}.api.blizzard.com/data/wow/achievement-category/index?namespace=${namespace}" | jq > /tmp/achievementCategories.json
+# Translate: item name (22206, -- Bouquet of Red Roses)
+wowItemTranslate 22206 37898 ...
+
+# Translate: Achievement category
+wowAchievementCategoryTranslate 155 156 ...
 ```
 
-### Create translation
-
-Languages: en_GB, de_DE, en_US, es_ES, es_MX, fr_FR, it_IT, ko_KR, pt_BR, ru_RU, zh_CN, zh_TW
-
-#### Translate: item & name
+### Simple methods
 
 ```bash
-wowItem() { \
-  curl -s -H "Authorization: Bearer ${accessToken}" \
-    "https://${realm}.api.blizzard.com/data/wow/item/${1}?namespace=${namespace}&locale=en_GB" \
-    | jq --raw-output '"\(.id), -- \(.name)"'; \
-}
+# Get item
+wowItem 22206
 
-wowItem 22206 > /tmp/wowItem.txt
-wowItem 44731 >> /tmp/wowItem.txt
-wowItem 49715 >> /tmp/wowItem.txt
-cat /tmp/wowItem.txt
-```
-
-Result:
-
-```text
-22206, -- Bouquet of Red Roses
-44731, -- Bouquet of Ebon Roses
-49715, -- Forever-Lovely Rose
-```
-
-#### Translate: Achievement category
-
-```bash
-achievementCategory() { \
-  curl -s -H "Authorization: Bearer ${accessToken}" \
-    "https://${realm}.api.blizzard.com/data/wow/achievement-category/${1}?namespace=${namespace}" \
-    | jq --raw-output '"L[\"\(.name.en_GB)\"] = true\nL[\"\(.name.en_GB)\"] = \"\(.name.de_DE)\"\nL[\"\(.name.en_GB)\"] = \"\(.name.en_US)\"\nL[\"\(.name.en_GB)\"] = \"\(.name.es_ES)\"\nL[\"\(.name.en_GB)\"] = \"\(.name.es_MX)\"\nL[\"\(.name.en_GB)\"] = \"\(.name.fr_FR)\"\nL[\"\(.name.en_GB)\"] = \"\(.name.it_IT)\"\nL[\"\(.name.en_GB)\"] = \"\(.name.ko_KR)\"\nL[\"\(.name.en_GB)\"] = \"\(.name.pt_BR)\"\nL[\"\(.name.en_GB)\"] = \"\(.name.ru_RU)\"\nL[\"\(.name.en_GB)\"] = \"\(.name.zh_CN)\"\nL[\"\(.name.en_GB)\"] = \"\(.name.zh_TW)\""'
-}
-
-achievementCategory 156
+# Get achievement categories
+wowAchievementCategories
+less /tmp/wowAchievementCategories.json
 ```
