@@ -5,6 +5,10 @@ local L = addonTable.L
 local AdiBags = LibStub("AceAddon-3.0"):GetAddon("AdiBags")
 local Tooltip
 
+local configuration = {
+	tooltipScanning = false, -- Tooltip scanning (This is a bad idea)
+}
+
 local filterDatabase = {
 	worldEventWinterVeil = {
 		items = {
@@ -271,56 +275,58 @@ function AdiBagsFilter:Filter(slotData)
 		return findCategoryByClass
 	end
 
-	-- Find filter by tooltip
-	-- Note: This is a bad idea, but it works
-	Tooltip = Tooltip or Tooltip_Init()
-	Tooltip:SetOwner(UIParent, "ANCHOR_NONE")
-	Tooltip:ClearLines()
+	if (configuration.tooltipScanning) then
+		-- Find filter by tooltip
+		-- Note: This is a bad idea, but it works
+		Tooltip = Tooltip or Tooltip_Init()
+		Tooltip:SetOwner(UIParent, "ANCHOR_NONE")
+		Tooltip:ClearLines()
 
-	if slotData.bag == BANK_CONTAINER then
-		Tooltip:SetInventoryItem("player", BankButtonIDToInvSlotID(slotData.slot, nil))
-	else
-		Tooltip:SetBagItem(slotData.bag, slotData.slot)
-	end
-
-	local tooltipText = {
-		unescape(Tooltip.leftside[1]:GetText()),
-		unescape(Tooltip.leftside[2]:GetText()),
-		unescape(Tooltip.leftside[3]:GetText()),
-		unescape(Tooltip.leftside[4]:GetText()),
-		unescape(Tooltip.leftside[5]:GetText()),
-		unescape(Tooltip.leftside[6]:GetText()),
-		unescape(Tooltip.leftside[7]:GetText()),
-		unescape(Tooltip.leftside[8]:GetText()),
-		unescape(Tooltip.leftside[9]:GetText()),
-	}
-
-	-- Find filter category by tooltip
-	local findCategoryByTooltip = table.foreach(options, function(optionKey, optionData)
-		if (self.db.profile[optionKey] and optionData.type == "toggle") then
-
-			-- Find filter category by explizit tooltip
-			for i = 1,9 do
-				local tooltipKey = "tooltip" .. i
-				if (filterDatabase[optionKey][tooltipKey] ~= nil and filterDatabase[optionKey][tooltipKey][tooltipText[i]]) then
-					return optionData.name
-				end
-			end
-
-			-- Find filter category by all tooltips
-			for i = 1,9 do
-				if (filterDatabase[optionKey].tooltip ~= nil and filterDatabase[optionKey].tooltip[tooltipText[i]]) then
-					return optionData.name
-				end
-			end
-
+		if slotData.bag == BANK_CONTAINER then
+			Tooltip:SetInventoryItem("player", BankButtonIDToInvSlotID(slotData.slot, nil))
+		else
+			Tooltip:SetBagItem(slotData.bag, slotData.slot)
 		end
-	end)
-	if (findCategoryByTooltip ~= nil) then
-		return (isDevelopment and color.red or "") .. findCategoryByTooltip .. (isDevelopment and color.reset or "")
-	end
 
-	Tooltip:Hide()
+		local tooltipText = {
+			unescape(Tooltip.leftside[1]:GetText()),
+			unescape(Tooltip.leftside[2]:GetText()),
+			unescape(Tooltip.leftside[3]:GetText()),
+			unescape(Tooltip.leftside[4]:GetText()),
+			unescape(Tooltip.leftside[5]:GetText()),
+			unescape(Tooltip.leftside[6]:GetText()),
+			unescape(Tooltip.leftside[7]:GetText()),
+			unescape(Tooltip.leftside[8]:GetText()),
+			unescape(Tooltip.leftside[9]:GetText()),
+		}
+
+		-- Find filter category by tooltip
+		local findCategoryByTooltip = table.foreach(options, function(optionKey, optionData)
+			if (self.db.profile[optionKey] and optionData.type == "toggle") then
+
+				-- Find filter category by explizit tooltip
+				for i = 1,9 do
+					local tooltipKey = "tooltip" .. i
+					if (filterDatabase[optionKey][tooltipKey] ~= nil and filterDatabase[optionKey][tooltipKey][tooltipText[i]]) then
+						return optionData.name
+					end
+				end
+
+				-- Find filter category by all tooltips
+				for i = 1,9 do
+					if (filterDatabase[optionKey].tooltip ~= nil and filterDatabase[optionKey].tooltip[tooltipText[i]]) then
+						return optionData.name
+					end
+				end
+
+			end
+		end)
+		if (findCategoryByTooltip ~= nil) then
+			return (isDevelopment and color.red or "") .. findCategoryByTooltip .. (isDevelopment and color.reset or "")
+		end
+
+		Tooltip:Hide()
+	end
 end
 
 function AdiBagsFilter:GetOptions()
