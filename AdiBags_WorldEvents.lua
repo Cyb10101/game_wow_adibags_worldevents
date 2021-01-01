@@ -19,6 +19,7 @@ local filterDatabase = {
 			128768, -- Candy Cane
 			139299, -- Finely-Tailored Red Holiday Hat
 			174865, -- A Tiny Winter Hat
+			21325, -- Mechanical Greench
 		},
 	},
 	worldEventHallowsEnd = {
@@ -54,6 +55,8 @@ local filterDatabase = {
 			33868, -- Brewfest Boots
 			33969, -- Purple Brewfest Hat
 			37897, -- Filled Green Brewfest Stein
+			38626, -- Empty Brew Bottle
+			37898, -- Wild Winter Pilsner
 		},
 	},
 	worldEventChildrensWeek = {
@@ -79,6 +82,7 @@ local filterDatabase = {
 	worldEventDarkmoonFaire = {
 		items = {
 			71083, -- Darkmoon Game Token
+			81055, -- Darkmoon Ride Ticket
 			92959, -- Darkmoon "Cougar"
 			92969, -- Darkmoon "Rocket"
 			151256, -- Purple Dance Stick
