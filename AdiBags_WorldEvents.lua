@@ -87,8 +87,13 @@ local filterDatabase = {
 		items = {
 			71083, -- Darkmoon Game Token
 			81055, -- Darkmoon Ride Ticket
+			92958, -- Darkmoon "Nightsaber"
 			92959, -- Darkmoon "Cougar"
+			92966, -- Darkmoon "Dragon"
+			92967, -- Darkmoon "Gryphon"
+			92968, -- Darkmoon "Murloc"
 			92969, -- Darkmoon "Rocket"
+			92970, -- Darkmoon "Wyvern"
 			151256, -- Purple Dance Stick
 			151257, -- Green Dance Stick
 			171364, -- Darkmoon Top Hat
