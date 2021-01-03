@@ -91,6 +91,7 @@ local filterDatabase = {
 			92969, -- Darkmoon "Rocket"
 			151256, -- Purple Dance Stick
 			151257, -- Green Dance Stick
+			171364, -- Darkmoon Top Hat
 		},
 	},
 	worldEventBrawlersGuild = {
