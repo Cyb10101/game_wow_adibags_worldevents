@@ -42,6 +42,8 @@ local filterDatabase = {
 	},
 	worldEventLunarFestival = {
 		items = {
+			21536, -- Elune Stone
+			21711, -- Lunar Festival Invitation
 		},
 	},
 	worldEventMidsummer = {
@@ -55,6 +57,7 @@ local filterDatabase = {
 	worldEventBrewfest = {
 		items = {
 			33016, -- Blue Brewfest Stein
+			33455, -- Brewfest Prize Ticket
 			33862, -- Brewfest Regalia
 			33868, -- Brewfest Boots
 			33969, -- Purple Brewfest Hat
