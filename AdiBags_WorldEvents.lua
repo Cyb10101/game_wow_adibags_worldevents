@@ -81,6 +81,12 @@ local filterDatabase = {
 			49669, -- Crown Cologne Sprayer
 			49670, -- Crown Chocolate Sampler
 			49715, -- Forever-Lovely Rose
+			49856, -- "VICTORY" Perfume
+			49857, -- "Enchantress" Perfume
+			49858, -- "Forever" Perfume
+			49859, -- "Bravado" Cologne
+			49860, -- "Wizardry" Cologne
+			49861, -- "STALWART" Cologne
 			49916, -- Lovely Charm Bracelet
 			49927, -- Love Token
 			49936, -- Lovely Stormwind Card
