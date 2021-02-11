@@ -81,6 +81,14 @@ local filterDatabase = {
 			49715, -- Forever-Lovely Rose
 			49916, -- Lovely Charm Bracelet
 			49927, -- Love Token
+			49936, -- Lovely Stormwind Card
+			49937, -- Lovely Undercity Card
+			49938, -- Lovely Darnassus Card
+			49939, -- Lovely Orgrimmar Card
+			49940, -- Lovely Ironforge Card
+			49941, -- Lovely Thunder Bluff Card
+			49942, -- Lovely Exodar Card
+			49943, -- Lovely Silvermoon City Card
 		},
 	},
 	worldEventPilgrimsBounty = {
