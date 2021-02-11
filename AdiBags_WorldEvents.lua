@@ -79,6 +79,7 @@ local filterDatabase = {
 			49655, -- Lovely Charm
 			49661, -- Lovely Charm Collector's Kit
 			49715, -- Forever-Lovely Rose
+			49916, -- Lovely Charm Bracelet
 			49927, -- Love Token
 		},
 	},
