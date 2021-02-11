@@ -78,6 +78,8 @@ local filterDatabase = {
 			44731, -- Bouquet of Ebon Roses
 			49655, -- Lovely Charm
 			49661, -- Lovely Charm Collector's Kit
+			49669, -- Crown Cologne Sprayer
+			49670, -- Crown Chocolate Sampler
 			49715, -- Forever-Lovely Rose
 			49916, -- Lovely Charm Bracelet
 			49927, -- Love Token
