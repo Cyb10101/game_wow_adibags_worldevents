@@ -72,9 +72,14 @@ local filterDatabase = {
 	},
 	worldEventLoveIsInTheAir = {
 		items = {
+			22200, -- Silver Shafted Arrow
 			22206, -- Bouquet of Red Roses
+			34258, -- Love Rocket
 			44731, -- Bouquet of Ebon Roses
+			49655, -- Lovely Charm
+			49661, -- Lovely Charm Collector's Kit
 			49715, -- Forever-Lovely Rose
+			49927, -- Love Token
 		},
 	},
 	worldEventPilgrimsBounty = {
