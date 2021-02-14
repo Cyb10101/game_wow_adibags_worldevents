@@ -72,8 +72,13 @@ local filterDatabase = {
 	},
 	worldEventLoveIsInTheAir = {
 		items = {
+			21813, -- Bag of Heart Candies
 			22200, -- Silver Shafted Arrow
 			22206, -- Bouquet of Red Roses
+			22236, -- Buttermilk Delight
+			22237, -- Dark Desire
+			22238, -- Very Berry Cream
+			22239, -- Sweet Surprise
 			34258, -- Love Rocket
 			44731, -- Bouquet of Ebon Roses
 			49655, -- Lovely Charm
