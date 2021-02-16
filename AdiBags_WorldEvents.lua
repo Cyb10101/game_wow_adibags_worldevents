@@ -102,6 +102,8 @@ local filterDatabase = {
 			49941, -- Lovely Thunder Bluff Card
 			49942, -- Lovely Exodar Card
 			49943, -- Lovely Silvermoon City Card
+
+			143907, -- Shard of Pirouetting Happiness (Required for achievement)
 		},
 	},
 	worldEventPilgrimsBounty = {
