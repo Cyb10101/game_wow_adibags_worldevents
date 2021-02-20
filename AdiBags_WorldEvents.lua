@@ -103,7 +103,12 @@ local filterDatabase = {
 			49942, -- Lovely Exodar Card
 			49943, -- Lovely Silvermoon City Card
 
-			143907, -- Shard of Pirouetting Happiness (Required for achievement)
+			-- Only required for achievement
+			143905, -- Winking Eye of Love
+			143906, -- Heartbreak Charm
+			143907, -- Shard of Pirouetting Happiness
+			143908, -- Choker of the Pure Heart
+			143909, -- Sweet Perfume Brooch
 		},
 	},
 	worldEventPilgrimsBounty = {
