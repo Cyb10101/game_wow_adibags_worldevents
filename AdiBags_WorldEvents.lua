@@ -42,6 +42,7 @@ local filterDatabase = {
 	},
 	worldEventLunarFestival = {
 		items = {
+			21100, -- Coin of Ancestry
 			21536, -- Elune Stone
 			21711, -- Lunar Festival Invitation
 		},
