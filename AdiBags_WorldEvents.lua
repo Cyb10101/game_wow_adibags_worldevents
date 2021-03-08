@@ -132,6 +132,7 @@ local filterDatabase = {
 	worldEventDarkmoonFaire = {
 		items = {
 			71083, -- Darkmoon Game Token
+			71634, -- Darkmoon Adventurer's Guide
 			81055, -- Darkmoon Ride Ticket
 			92958, -- Darkmoon "Nightsaber"
 			92959, -- Darkmoon "Cougar"
