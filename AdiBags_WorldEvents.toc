@@ -7,5 +7,6 @@
 ## Version: @project-version@
 ## X-Date: @project-date-iso@
 
+Utility.lua
 Localization.lua
 AdiBags_WorldEvents.lua

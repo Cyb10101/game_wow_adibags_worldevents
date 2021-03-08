@@ -1,12 +1,19 @@
 -- Shared addon data
 local addonName, addonTable = ...
 local L = addonTable.L
+local color = addonTable.color
+local dump = addonTable.dump
+local dumpTable = addonTable.dumpTable
+local dumpTooltip = addonTable.dumpTooltip
+local tocVersionDeprecated = addonTable.tocVersionDeprecated
 
 local AdiBags = LibStub("AceAddon-3.0"):GetAddon("AdiBags")
 local Tooltip
 
 local configuration = {
+	debug = false,
 	tooltipScanning = false, -- Tooltip scanning (This is a bad idea)
+	cacheNoReCheck = false, -- Just a variable to avoid rescanning
 }
 
 local filterDatabase = {
@@ -14,16 +21,17 @@ local filterDatabase = {
 		items = {
 			17202, -- Snowball
 			21213, -- Preserved Holly
+			21325, -- Mechanical Greench
 			21328, -- Wand of Holiday Cheer
 			21524, -- Red Winter Hat
 			21525, -- Green Winter Hat
 			34085, -- Red Winter Clothes
 			34087, -- Green Winter Clothes
+			35557, -- Huge Snowball
 			70923, -- Gaudy Winter Veil Sweater
 			128768, -- Candy Cane
 			139299, -- Finely-Tailored Red Holiday Hat
 			174865, -- A Tiny Winter Hat
-			21325, -- Mechanical Greench
 		},
 	},
 	worldEventHallowsEnd = {
@@ -223,6 +231,10 @@ local options = {
 	},
 }
 
+local cache = {
+	items = {}
+}
+
 local function initialize()
 	-- Convert filterDatabase (item|class|tooltip) [id => true]
 	table.foreach(options, function(optionKey, optionData)
@@ -296,27 +308,13 @@ local function unescape(String)
 	return Result
 end
 
-function AdiBagsFilter:Filter(slotData)
-	-- Find filter category by itemId
-	local findCategoryByItemId = table.foreach(options, function(optionKey, optionData)
-		if (self.db.profile[optionKey] and optionData.type == "toggle" and filterDatabase[optionKey].items ~= nil and filterDatabase[optionKey].items[slotData.itemId]) then
-			return optionData.name
-		end
-	end)
-	if (findCategoryByItemId ~= nil) then
-		return findCategoryByItemId
+local function findCategoryByTooltip(instanceFilter, slotData)
+	if (cache.items[slotData.itemId] ~= nil and cache.items[slotData.itemId] == configuration.cacheNoReCheck) then
+		return nil -- Previously not found
 	end
 
-	-- Find filter by class or subclass
-	local findCategoryByClass = table.foreach(options, function(optionKey, optionData)
-		if (self.db.profile[optionKey] and optionData.type == "toggle") then
-			if ((filterDatabase[optionKey].class ~= nil and filterDatabase[optionKey].class[slotData.class]) or (filterDatabase[optionKey].subclass ~= nil and filterDatabase[optionKey].subclass[slotData.subclass])) then
-				return optionData.name
-			end
-		end
-	end)
-	if (findCategoryByClass ~= nil) then
-		return findCategoryByClass
+	if (cache.items[slotData.itemId] ~= nil) then
+		return (configuration.debug and color.red or "") .. cache.items[slotData.itemId] .. (configuration.debug and color.reset or "")
 	end
 
 	if (configuration.tooltipScanning) then
@@ -345,8 +343,8 @@ function AdiBagsFilter:Filter(slotData)
 		}
 
 		-- Find filter category by tooltip
-		local findCategoryByTooltip = table.foreach(options, function(optionKey, optionData)
-			if (self.db.profile[optionKey] and optionData.type == "toggle") then
+		local categoryByTooltip = table.foreach(options, function(optionKey, optionData)
+			if (instanceFilter.db.profile[optionKey] and optionData.type == "toggle") then
 
 				-- Find filter category by explizit tooltip
 				for i = 1,9 do
@@ -365,11 +363,45 @@ function AdiBagsFilter:Filter(slotData)
 
 			end
 		end)
-		if (findCategoryByTooltip ~= nil) then
-			return (isDevelopment and color.red or "") .. findCategoryByTooltip .. (isDevelopment and color.reset or "")
-		end
-
 		Tooltip:Hide()
+
+		if (categoryByTooltip ~= nil) then
+			cache.items[slotData.itemId] = categoryByTooltip
+			return (configuration.debug and color.red or "") .. categoryByTooltip .. (configuration.debug and color.reset or "")
+		end
+	end
+
+	cache.items[slotData.itemId] = configuration.cacheNoReCheck
+	return nil
+end
+
+function AdiBagsFilter:Filter(slotData)
+	-- Find filter category by itemId
+	local findCategoryByItemId = table.foreach(options, function(optionKey, optionData)
+		if (self.db.profile[optionKey] and optionData.type == "toggle" and filterDatabase[optionKey].items ~= nil and filterDatabase[optionKey].items[slotData.itemId]) then
+			return optionData.name
+		end
+	end)
+	if (findCategoryByItemId ~= nil) then
+		return (configuration.debug and color.red or "") .. findCategoryByItemId .. (configuration.debug and color.reset or "")
+	end
+
+	-- Find filter by class or subclass
+	local findCategoryByClass = table.foreach(options, function(optionKey, optionData)
+		if (self.db.profile[optionKey] and optionData.type == "toggle") then
+			if ((filterDatabase[optionKey].class ~= nil and filterDatabase[optionKey].class[slotData.class]) or (filterDatabase[optionKey].subclass ~= nil and filterDatabase[optionKey].subclass[slotData.subclass])) then
+				return optionData.name
+			end
+		end
+	end)
+	if (findCategoryByClass ~= nil) then
+		return (configuration.debug and color.red or "") .. findCategoryByClass .. (configuration.debug and color.reset or "")
+	end
+
+	-- Find filter by tooltip
+	local categoryByTooltip = findCategoryByTooltip(self, slotData)
+	if (categoryByTooltip ~= nil) then
+		return categoryByTooltip
 	end
 end
 
