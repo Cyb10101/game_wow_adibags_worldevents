@@ -19,7 +19,13 @@ local configuration = {
 local filterDatabase = {
 	worldEventWinterVeil = {
 		items = {
+			17196, -- Holiday Spirits
 			17202, -- Snowball
+			17404, -- Blended Bean Brew
+			17406, -- Holiday Cheesewheel
+			17407, -- Graccu's Homemade Meat Pie
+			17685, -- Smokywood Pastures Sampler
+			17712, -- Winter Veil Disguise Kit
 			21213, -- Preserved Holly
 			21325, -- Mechanical Greench
 			21328, -- Wand of Holiday Cheer
@@ -29,6 +35,7 @@ local filterDatabase = {
 			34087, -- Green Winter Clothes
 			35557, -- Huge Snowball
 			70923, -- Gaudy Winter Veil Sweater
+			128647, -- Fizzy Apple Cider
 			128768, -- Candy Cane
 			139299, -- Finely-Tailored Red Holiday Hat
 			174865, -- A Tiny Winter Hat
@@ -42,6 +49,7 @@ local filterDatabase = {
 	},
 	worldEventNoblegarden = {
 		items = {
+			44792, -- Blossoming Branch
 			44800, -- Spring Robes
 			44803, -- Spring Circlet
 			45067, -- Egg Basket
@@ -59,6 +67,7 @@ local filterDatabase = {
 		items = {
 			23323, -- Crown of the Fire Festival
 			23324, -- Mantle of the Fire Festival
+			34599, -- Juggling Torch
 			34683, -- Sandals of Summer
 			34685, -- Vestment of Summer
 		},
@@ -72,6 +81,7 @@ local filterDatabase = {
 			33969, -- Purple Brewfest Hat
 			37897, -- Filled Green Brewfest Stein
 			38626, -- Empty Brew Bottle
+			37499, -- Lord of Frost's Private Label
 			37898, -- Wild Winter Pilsner
 		},
 	},

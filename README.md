@@ -24,6 +24,12 @@ source functions.sh
 authentificate "{Your client id}" "{Your client secret}"
 ```
 
+## Deploy
+
+* Update `Interface` id in `AdiBags_WorldEvents.toc`
+* git commit
+* git tag -f 100002.1
+
 ### Translation
 
 ```bash

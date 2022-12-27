@@ -1,4 +1,4 @@
-## Interface: 90005
+## Interface: 100002
 ## Title: AdiBags - World Events
 ## Notes: Adds various items to AdiBags filter groups
 ## Author: Cyb10101
