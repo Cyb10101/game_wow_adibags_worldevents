@@ -2,9 +2,9 @@
 
 Addon for World of Warcraft to filter "World Events" using AdiBags.
 
-* [Curse: AdiBags_WorldEvents](https://www.curseforge.com/wow/addons/adibags-world-events)
-* [Curse: AdiBags](https://www.curseforge.com/wow/addons/adibags)
-* [Curse: idTip](https://www.curseforge.com/wow/addons/idTip)
+* [CurseForge: AdiBags_WorldEvents](https://www.curseforge.com/wow/addons/adibags-world-events)
+* [CurseForge: AdiBags](https://www.curseforge.com/wow/addons/adibags)
+* [CurseForge: idTip](https://www.curseforge.com/wow/addons/idTip)
 
 ## Development
 
@@ -24,11 +24,18 @@ source functions.sh
 authentificate "{Your client id}" "{Your client secret}"
 ```
 
-## Deploy
+### Deploy
 
-* Update `Interface` id in `AdiBags_WorldEvents.toc`
-* git commit
-* git tag -f 100002.1
+* Update `Interface` id in *.toc file
+
+```bash
+git add *.toc
+git commit
+git tag -f 100002.1
+git push && git push --tags
+```
+
+* Wait until CurseForge build automatically
 
 ### Translation
 
