@@ -11,17 +11,46 @@ Addon for World of Warcraft to filter "World Events" using AdiBags.
 * [API Clients](https://develop.battle.net/access/clients)
 * [API Documentation](https://develop.battle.net/documentation/world-of-warcraft/game-data-apis)
 
-Software:
+### Functions script
+
+Requirements:
 
 ```bash
 sudo apt install curl jq
 ```
 
-Required API Authorization:
+Authentificate API:
 
 ```bash
 source functions.sh
-authentificate "{Your client id}" "{Your client secret}"
+
+# Authentificate by Json file
+getKeysByJsonFile ~/Sync/private-notes/storage/api-keys.json
+
+# Authentificate directly
+authentificate "{Client id}" "{Client secret}"
+```
+
+Translate:
+
+```bash
+# Translate: item name (22206, -- Bouquet of Red Roses)
+wowItemTranslate 22206 37898 ...
+
+# Translate: Achievement category
+wowAchievementCategoryTranslate 155 156 ...
+```
+
+Other methods:
+
+```bash
+# Get item
+wowItem 22206
+wowItemPreview 22206
+
+# Get achievement categories
+wowAchievementCategories
+less /tmp/wowAchievementCategories.json
 ```
 
 ### Deploy
@@ -36,24 +65,3 @@ git push && git push --tags
 ```
 
 * Wait until CurseForge build automatically
-
-### Translation
-
-```bash
-# Translate: item name (22206, -- Bouquet of Red Roses)
-wowItemTranslate 22206 37898 ...
-
-# Translate: Achievement category
-wowAchievementCategoryTranslate 155 156 ...
-```
-
-### Simple methods
-
-```bash
-# Get item
-wowItem 22206
-
-# Get achievement categories
-wowAchievementCategories
-less /tmp/wowAchievementCategories.json
-```
