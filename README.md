@@ -60,7 +60,7 @@ less /tmp/wowAchievementCategories.json
 ```bash
 git add *.toc
 git commit
-git tag -f 100002.1
+git tag '100002.1'
 git push && git push --tags
 ```
 
